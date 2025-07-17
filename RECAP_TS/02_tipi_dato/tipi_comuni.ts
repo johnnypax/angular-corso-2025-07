@@ -18,4 +18,11 @@
 
 // ------------------------------- TUPLA
 
-let persona : [string, number] = ["Giovanni", 38]
+// let persona : [string, number] = ["Giovanni", 38]
+
+// -------------------------------- ANY
+
+let variabileTotale : any;
+
+variabileTotale = "Giovanni";
+variabileTotale = 5;
