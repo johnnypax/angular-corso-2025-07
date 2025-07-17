@@ -1,0 +1,24 @@
+<ul>
+    <li *ngFor="let elemento of elenco">
+        {{elemento}}
+    </li>
+</ul>
+
+<hr />
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Matricola</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let studente of elenco_studenti">
+            <td>{{ studente.nome }}</td>
+            <td>{{ studente.cognome }}</td>
+            <td>{{ studente.matr }}</td>
+        </tr>
+    </tbody>
+</table>
