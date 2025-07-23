@@ -22,3 +22,22 @@
         </tr>
     </tbody>
 </table>
+
+<hr />
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of elenco_prodotti">
+            <td>{{ prod.nom }}</td>
+            <td>{{ prod.des }}</td>
+            <td>{{ prod.pre }}</td>
+        </tr>
+    </tbody>
+</table>
