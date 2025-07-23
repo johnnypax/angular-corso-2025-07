@@ -12,14 +12,25 @@ import { CommonModule } from '@angular/common';
 export class Lista {
 
   elenco: Prodotto[] = [];
+  timer: number | undefined;
 
   constructor(private service: ProdottoService){
-    console.log("Invocato costruttore"); 
+    console.log("Invocato costruttore Lista"); 
   }
 
   ngOnInit(): void {
-    this.elenco = this.service.GetAll();
+    this.timer = setInterval(() => {
+      this.elenco = this.service.GetAll();
+      console.log("Invocato interval");
+      
+    }, 1000);
+
     console.log("Invocato ngOnInit");
+  }
+
+  ngOnDestroy(): void {
+    console.log("Invocato onDestroy di Lista");
+    clearInterval(this.timer)
   }
 
   elimina(cod: string | undefined): void{

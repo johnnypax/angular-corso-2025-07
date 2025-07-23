@@ -19,6 +19,8 @@ export class Inserimento {
   qua: number | undefined;
 
   constructor(private service: ProdottoService, private router: Router){
+    console.log("Invocato il costruttore di Inserimento");
+    
   }
 
   salva(): void {
