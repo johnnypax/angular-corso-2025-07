@@ -9,6 +9,8 @@ export class ProdottoService {
   elenco: Prodotto[] = [];
 
   constructor(){
+    console.log("ProdottService costruttore invocato!")
+
     let stringaLs = localStorage.getItem("ferramenta");
 
     if(!stringaLs)
@@ -18,6 +20,8 @@ export class ProdottoService {
   }
 
   Insert(objProd: Prodotto): boolean {
+    this.elenco.push(objProd);
+    localStorage.setItem("ferramenta", JSON.stringify(this.elenco))
     return true;
   }
 
