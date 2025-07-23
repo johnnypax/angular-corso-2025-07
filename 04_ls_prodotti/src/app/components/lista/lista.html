@@ -1,1 +1,20 @@
-<p>lista works!</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Codice</th>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+            <th>Quantità</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of elenco">
+            <td>{{ prod.codice }}</td>
+            <td>{{ prod.nome }}</td>
+            <td>{{ prod.descrizione }}</td>
+            <td>{{ prod.prezzo }}</td>
+            <td>{{ prod.quantita }}</td>
+        </tr>
+    </tbody>
+</table>

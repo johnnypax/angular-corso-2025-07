@@ -25,4 +25,9 @@ export class ProdottoService {
     return true;
   }
 
+  GetAll(): Prodotto[] {
+    let stringaLs = localStorage.getItem("ferramenta");
+    return stringaLs ? JSON.parse(stringaLs) : []
+  }
+
 }
