@@ -15,6 +15,9 @@
             <td>{{ prod.descrizione }}</td>
             <td>{{ prod.prezzo }}</td>
             <td>{{ prod.quantita }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="elimina(prod.codice)">X</button>
+            </td>
         </tr>
     </tbody>
 </table>

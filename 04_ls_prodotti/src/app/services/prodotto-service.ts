@@ -30,4 +30,21 @@ export class ProdottoService {
     return stringaLs ? JSON.parse(stringaLs) : []
   }
 
+  Delete(cod: string): boolean {
+    let stringaLs = localStorage.getItem("ferramenta");
+
+    if(stringaLs)
+      this.elenco = JSON.parse(stringaLs);
+
+    for(let [index, item] of this.elenco.entries()){
+      if(item.codice === cod){
+        this.elenco.splice(index, 1)
+        localStorage.setItem("ferramenta", JSON.stringify(this.elenco))
+        return true;
+      }
+    }
+
+    return false;
+  }
+
 }
