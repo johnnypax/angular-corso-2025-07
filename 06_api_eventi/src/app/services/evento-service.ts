@@ -21,4 +21,26 @@ export class EventoService {
     return elenco_risultati;
   }
 
+  async Inserimento(evt: Evento): Promise<boolean>{
+    try{
+      const response = await fetch("http://127.0.0.1:4000/events", {
+        method: "POST",
+        body: JSON.stringify(evt),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+
+      if(!response.ok){
+        console.log("Errore della richiesta", response.status)
+        return false;
+      }
+
+      return true;
+    } catch (error){
+      console.log(error)
+      return false;
+    }
+  }
+
 }

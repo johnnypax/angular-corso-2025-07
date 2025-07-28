@@ -1,1 +1,22 @@
-<p>lista works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>codice</th>
+            <th>nome</th>
+            <th>descrizione</th>
+            <th>data</th>
+            <th>location</th>
+            <th>partecipanti</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let evt of elenco">
+            <td>{{ evt.codice }}</td>
+            <td>{{ evt.nome }}</td>
+            <td>{{ evt.descrizione }}</td>
+            <td>{{ evt.data }}</td>
+            <td>{{ evt.location }}</td>
+            <td>{{ evt.partecipanti }}</td>
+        </tr>
+    </tbody>
+</table>
