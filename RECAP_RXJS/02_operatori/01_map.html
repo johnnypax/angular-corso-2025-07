@@ -9,22 +9,20 @@
 </head>
 <body>
     
-    <button type="button" id="pulsante">Cliccami</button>
-
     <script>
 
         const { fromEvent } = rxjs;
+        const { map } = rxjs.operators;
 
-        const bottone = document.getElementById("pulsante");
+        const click$ = fromEvent(document, 'click');
 
-        const click$ = fromEvent(bottone, 'click');
-
-        click$.subscribe(evt => {
-            // console.log("Mi hai cliccato")
-            console.log(evt.clientX)
-        })
-
-
+        click$
+            .pipe(
+                map(evento => evento.clientX)
+            )
+            .subscribe(x => {
+                console.log(x)
+            })
 
     </script>
 

@@ -15,14 +15,11 @@
 
         const { fromEvent } = rxjs;
 
-        const bottone = document.getElementById("pulsante");
-
-        const click$ = fromEvent(bottone, 'click');
-
-        click$.subscribe(evt => {
-            // console.log("Mi hai cliccato")
-            console.log(evt.clientX)
-        })
+        fromEvent(document.getElementById("pulsante"), 'click')
+            .subscribe(evt => {
+                // console.log("Mi hai cliccato")
+                console.log(evt.clientX)
+            })
 
 
 
