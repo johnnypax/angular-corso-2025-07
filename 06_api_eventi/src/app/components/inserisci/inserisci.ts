@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Evento } from '../../models/evento';
 import { EventoService } from '../../services/evento-service';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inserisci',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './inserisci.html',
   styleUrl: './inserisci.css'
 })
@@ -17,7 +19,9 @@ export class Inserisci {
     loc?: string;
     par?: number;
 
-    constructor(private service: EventoService){
+    successo: boolean = false;
+
+    constructor(private service: EventoService, private router: Router){
 
     }
 
@@ -33,7 +37,12 @@ export class Inserisci {
 
       this.service.Inserimento(evt).then(ris => {
         if(ris){
-          alert("Inserimento effettuato con successo");
+          // alert("Inserimento effettuato con successo");
+          this.successo = true;
+
+          setTimeout(() => {
+            this.router.navigateByUrl("/")
+          }, 3 * 1000);
         }
         else{
           alert("Errore di inserimento");
