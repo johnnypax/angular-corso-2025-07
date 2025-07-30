@@ -16,7 +16,7 @@
 
     <script>
 
-        const { fromEvent, interval } = rxjs;
+        const { fromEvent, interval, switchMap } = rxjs;
         const { take } = rxjs.operators;
 
         const pulsante = document.getElementById("avvia");
@@ -24,13 +24,24 @@
 
         const btn$ = fromEvent(pulsante, 'click')
 
-        btn$.subscribe(evt => {
-            const stream$ = interval(1000);
+        // Memory Leak
+        // btn$.subscribe(evt => {
+        //     const stream$ = interval(1000);
 
-            stream$.subscribe(val => {
+        //     stream$.subscribe(val => {
+        //         risultato.innerText = val;
+        //     })
+        // })
+
+        btn$
+            .pipe(
+                switchMap(() => interval(1000).pipe(take(10)))
+            )
+            .subscribe(val => {
+                console.log(val);
                 risultato.innerText = val;
             })
-        })
+
 
     </script>
 
