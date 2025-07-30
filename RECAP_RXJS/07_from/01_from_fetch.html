@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    
+    <script>
+
+        const { of, from } = rxjs;
+
+        const prom = fetch("https://jsonplaceholder.typicode.com/posts/1");
+
+        //Trasformazione della Pomise -> Observable
+        const obs$ = from(prom);
+
+        obs$.subscribe(response => {
+            console.log(response)
+        })
+
+    </script>
+
+</body>
+</html>
