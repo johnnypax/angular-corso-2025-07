@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    
+    <script>
+
+        const { Subject } = rxjs;
+
+        const subj = new Subject();
+
+        subj.subscribe({
+            next: val => console.log("SUBS 1", val),
+            error: err => console.log("SUBS 1", err),
+            complete: () => console.log("SUBS 1", "Ho completato lo stream")
+        })
+        
+        subj.subscribe({
+            next: val => console.log("SUBS 2", val),
+            error: err => console.log("SUBS 2", err),
+            complete: () => console.log("SUBS 2", "Ho completato lo stream")
+        })
+
+        subj.next("Ciao Giovanni")
+        subj.next("Ciao Valeria")
+
+        // subj.error("Errore personalizzato") 
+        // subj.next("Ciao Marika")                //Unreachable
+        
+        subj.complete();
+        subj.next("Ciao Mario")                     //Unreachable
+    </script>
+
+</body>
+</html>

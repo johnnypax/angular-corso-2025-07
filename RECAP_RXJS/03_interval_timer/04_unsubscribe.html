@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    
+    <h2>Crea un timer che conta e si ferma al click su Ferma</h2>
+
+    Timer: <span id="secondi">Caricamento...</span>
+    <button type="button" id="avvia">Avvia</button>
+    <button type="button" id="ferma">Ferma</button>
+
+    <script>
+
+        const { fromEvent, interval, switchMap } = rxjs;
+        const { take } = rxjs.operators;
+
+        const risultato = document.getElementById("secondi");
+        const avvia = document.getElementById("avvia");
+        const ferma = document.getElementById("ferma");
+
+        let timer = null;
+
+        fromEvent(avvia, 'click')
+            .subscribe(() => {
+
+                if(timer){
+                    console.log("Timer già avviato")
+                    return;
+                }
+
+                timer = interval(1000)
+                            .subscribe(val => {
+                                console.log(val + 1);
+                                risultato.innerHTML = val + 1
+                            })
+
+                console.log(timer)
+
+            })
+
+        fromEvent(ferma, 'click')
+            .subscribe(() => {
+
+                if(timer){
+                    timer.unsubscribe();
+                    timer = null;
+
+                    risultato.innerHTML += " (Interrotto)"
+                }
+
+            })
+        
+
+
+
+    </script>
+
+</body>
+</html>
