@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/rxjs@7.8.2/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+    
+    <script>
+
+        /* Introduzione OF */
+
+        // const { of } = rxjs;
+
+        // const obs$ = of(1,2,3,4,5);
+
+        // // const obs2$ = new Observable(subscriber => {
+        // //     subscriber.next(1);
+        // //     subscriber.next(2);
+        // //     subscriber.next(3);
+        // //     subscriber.next(4);
+        // //     subscriber.next(5);
+        // // })
+
+        // obs$.subscribe(val => {
+        //     console.log(val)
+        // })
+
+        /* Combinazione di elementi */
+
+        // const { of, map } = rxjs;
+
+        // const obs$ = of("Giovanni", "Valeria", "Marika");
+
+        // obs$
+        //     .pipe(
+        //         map(n => n.toUpperCase())
+        //     )
+        //     .subscribe(val => {
+        //         console.log(val)
+        //     })
+
+        /* Response HTTP */
+
+        const { of } = rxjs;
+
+        const fakeHttp$ = of({status: "ERROR", data: "Stack trace"})
+
+        fakeHttp$.subscribe(val => {
+            console.log(val);
+            
+        })
+
+    </script>
+
+</body>
+</html>
